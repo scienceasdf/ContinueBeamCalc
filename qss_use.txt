@@ -1,0 +1,14 @@
+/*
+QString strPath = QCoreApplication::applicationDirPath();
+qDebug()<<strPath;
+QString strCssFile = strPath + "/my.qss";
+QFile fCss(strCssFile);
+if( !fCss.open(QFile::ReadOnly))
+{
+        qDebug("css File %s load false",strCssFile);
+        return;
+}
+QString strCssContent(fCss.readAll());
+setStyleSheet(strCssContent);
+fCss.close();*/
+use qss file

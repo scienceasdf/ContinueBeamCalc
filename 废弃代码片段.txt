@@ -1,0 +1,168 @@
+/*for(int j=0;j<99;j++)
+{
+    x0=j*beam1->leng/100.0;
+    y0=-beam1->bending(x0);
+    x1=(j+1)*beam1->leng/100.0;
+    y1=-beam1->bending(x1);
+    painter.drawLine((QPoint((5.0*j+200+50),(ratio*5000.0*y0*beam1->leng/100.0+100))),
+                     (QPoint((5.0*(j+1)+200+50),(ratio*5000.0*y1*beam1->leng/100.0+100))));
+
+}*/
+
+
+double x0,y0,x1,y1;
+/*for(int j=0;j<100;j++)
+{
+
+    x0=j*beam1->leng/100.0;
+    y0=-beam1->bending(x0);
+    x1=(j+1)*beam1->leng/100.0;
+    y1=-beam1->bending(x1);
+    painter.drawLine((QPoint((5.0*j+200+50),(ratio*5000.0*y0*beam1->leng/100.0+100))),
+                 (QPoint((5.0*(j+1)+200+50),(ratio*5000.0*y1*beam1->leng/100.0+100))));
+}*/
+
+
+QComboBox {
+     min-width: 6em;
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,	/*三个坐标对应的是上。中。下的background的颜色*/
+                                 stop: 0 #122C39, stop: 0.5 #758385,
+                                 stop: 1.0 #15A8FF);
+    border-color: #11505C;			/*改变boder的颜色，以便实现动态感觉*/
+    border-style: outset;
+    border-width: 5px;				/*boder的长度，有突出效果*/
+    border-radius: 1px;
+    padding: 1px;
+
+    background-image=url(:/icon/dark/appbar.arrow.down.png);
+ }
+QComboBox::hover{
+  border-color:#5D8B9E;
+}
+
+
+ QComboBox:editable {
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #080B10,
+                                 stop: 1.0 #212C3F);
+ }
+
+ QComboBox:!editable, QComboBox::drop-down:editable {
+      background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #080B10,
+                                 stop: 1.0 #212C3F);
+ }
+
+ /* QComboBox gets the "on" state when the popup is open */
+ QComboBox:!editable:on, QComboBox::drop-down:editable:on {
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #080B10,
+                                 stop: 1.0 #212C3F);;
+ }
+
+ QComboBox:on { /* shift the text when the popup opens */
+     padding-top: 3px;
+     padding-left: 4px;
+ }
+ QComboBox::drop-down {
+     subcontrol-origin: padding;
+     subcontrol-position: top right;
+     width: 15px;
+
+     border-left-width: 1px;
+     border-left-color: 32435E;
+     border-left-style: solid; /* just a single line */
+     border-top-right-radius: 3px; /* same radius as the QComboBox */
+     border-bottom-right-radius: 3px;
+ }
+
+ QComboBox::down-arrow {
+     image: url(:/icon/dark/appbar.arrow.down.png);
+ }
+
+ QComboBox::down-arrow:on { /* shift the arrow when popup is open */
+     top: 1px;
+     left: 1px;
+ }
+
+ QComboBox QAbstractItemView {
+     border: 2px solid #32435E;
+     selection-background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #506B79,
+                                 stop: 1.0 #0D95A6);
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #1B2534, stop: 0.4 #010101,
+                                 stop: 0.5 #000101, stop: 1.0 #1F2B3C);
+ }
+------------------------------------------
+QComboBox {
+     min-width: 6em;
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,	/*三个坐标对应的是上。中。下的background的颜色*/
+                                 stop: 0 #122C39, stop: 0.5 #758385,
+                                 stop: 1.0 #15A8FF);
+    border-color: #11505C;			/*改变boder的颜色，以便实现动态感觉*/
+    border-style: outset;
+    border-width: 3px;				/*boder的长度，有突出效果*/
+    border-radius: 1px;
+    padding: 1px;
+
+ }
+QComboBox::hover{
+  border-color:#5D8B9E;
+}
+
+
+ QComboBox:editable {
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #080B10,
+                                 stop: 1.0 #212C3F);
+ }
+
+ QComboBox:!editable, QComboBox::drop-down:editable {
+      background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #080B10,
+                                 stop: 1.0 #212C3F);
+ }
+
+ /* QComboBox gets the "on" state when the popup is open */
+ QComboBox:!editable:on, QComboBox::drop-down:editable:on {
+     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                 stop: 0 #080B10,
+                                 stop: 1.0 #212C3F);;
+ }
+
+
+QComboBox:on { /* shift the text when the popup opens */
+    padding-top: 3px;
+    padding-left: 4px;
+}
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px;
+
+    border-left-width: 1px;
+    border-left-color: 32435E;
+    border-left-style: solid; /* just a single line */
+    border-top-right-radius: 3px; /* same radius as the QComboBox */
+    border-bottom-right-radius: 3px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/icon/light/appbar.arrow.down.png);
+}
+
+QComboBox::down-arrow:on { /* shift the arrow when popup is open */
+    top: 6px;
+    left: 6px;
+}
+QComboBox QAbstractItemView {
+    border: 2px solid #32435E;
+    selection-background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #506B79,
+                                stop: 1.0 #0D95A6);
+   background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #1B2534, stop: 0.4 #010101,
+                                stop: 0.5 #000101, stop: 1.0 #1F2B3C);
+}
+
