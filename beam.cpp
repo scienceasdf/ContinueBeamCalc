@@ -278,7 +278,7 @@ void continBeam::calc()
     int i=0;
     double pos=resPos[1];
     double f;
-    int max=resPos.size()-2;
+    int max=beams.size();
     for(int k=0;k<max;k++){
         beams[k]->loads.clear();
         beams[k]->meLoads.clear();

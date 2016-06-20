@@ -21,6 +21,7 @@ public:
     ~Widget();
     continBeam* beam1;
     double ratio=1;
+    bool txtChange=0;
 private:
     Ui::Widget *ui;
     void drawBeam(QPainter& painter);
@@ -44,6 +45,7 @@ private slots:
     void on_addResButton_clicked();
     void on_calcButton_clicked();
     void on_resClrButton_clicked();
+    void on_lengthText_editingFinished();
 };
 
 

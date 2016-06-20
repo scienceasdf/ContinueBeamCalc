@@ -88,7 +88,8 @@ void Widget::paintEvent(QPaintEvent* event)
 
 void Widget::on_pushButton_2_clicked()
 {
-    if ((ui->posText->text().toDouble()<0) || ui->posText_2->text().toDouble()<0)
+    if ((ui->posText->text().toDouble()<0 || ui->posText->text().toDouble()>beam1->leng) ||
+            ui->posText_2->text().toDouble()<0 || ui->posText_2->text().toDouble()>beam1->leng )
     {
         int ret=QMessageBox::information(this,"警告","非法位置输入",QMessageBox::Ok);
         return;
@@ -164,14 +165,7 @@ void Widget::on_IzText_textChanged(const QString &arg1)
 
 void Widget::on_lengthText_textChanged(const QString &arg1)
 {
-    double length;
-    QString valueStr=ui->lengthText->text();
-    length=valueStr.toDouble();
-    beam1->leng=length;
-    beam1->resPos.erase(beam1->resPos.begin(),beam1->resPos.end());
-    beam1->resPos.push_back(0);
-    beam1->resPos.push_back(beam1->leng);
-    update();
+    txtChange=1;
 
 }
 
@@ -251,14 +245,14 @@ void Widget::wheelEvent(QWheelEvent *event){
 
 void Widget::mouseMoveEvent(QMouseEvent *e) {
     int x=e->pos().rx();
-    if(x<751 && x>250 ){
+    if(x<750 && x>250 ){
     ui->XPosLabel->setText("X坐标(m):"+QString::number((x-250)*beam1->leng/500));
     ui->vLabel->setText("挠度(m):"+QString::number(beam1->bending((x-250)*beam1->leng/500)));
     ui->FsyLabel->setText("剪力(N):"+QString::number(beam1->neili((x-250)*beam1->leng/500)));
     ui->MLabel->setText("弯矩(N*m):"+QString::number(beam1->wanju((x-250)*beam1->leng/500)));
     }
-    if(x==250){
-        ui->XPosLabel->setText("X坐标(m):"+QString::number(0));
+    if(x==250 || x==750){
+        ui->XPosLabel->setText("X坐标(m):"+QString::number((x-250)*beam1->leng/500));
         ui->vLabel->setText("挠度(m):"+QString::number(0));
         ui->FsyLabel->setText("剪力(N):"+QString::number(0));
         ui->MLabel->setText("弯矩(N*m):"+QString::number(0));
@@ -434,4 +428,20 @@ void Widget::on_resClrButton_clicked()
     beam1->resPos.push_back(0);
     beam1->resPos.push_back(beam1->leng);
     update();
+}
+
+void Widget::on_lengthText_editingFinished()
+{
+    if(txtChange) {
+        QMessageBox::information(this,"警告","长度改变将会让约束清零，载荷清零",QMessageBox::Ok);
+        double length;
+        QString valueStr=ui->lengthText->text();
+        length=valueStr.toDouble();
+        beam1->leng=length;
+        beam1->resPos.erase(beam1->resPos.begin(),beam1->resPos.end());
+        beam1->resPos.push_back(0);
+        beam1->resPos.push_back(beam1->leng);
+        update();
+        txtChange=!txtChange;
+    }
 }
