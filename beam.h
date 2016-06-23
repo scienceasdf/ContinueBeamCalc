@@ -27,8 +27,8 @@ public:
 
     void loadlin(double& pos1,double& pos2,double& force1,double& force2);
 
-    double thetaA();
-    double thetaB();
+    virtual double thetaA();
+    virtual double thetaB();
 
 };
 
@@ -39,8 +39,8 @@ public:
     double bending(const double& pos);
     double wanju(const double& pos);
     double neili(const double&);
-    //double thetaA();
-    //double thetaB();
+    double thetaA();
+    double thetaB();
 
 };
 
@@ -57,8 +57,8 @@ public:
 
     double bending(const double&);
 
-    //double thetaA();
-    //double thetaB();
+    double thetaA();
+    double thetaB();
 
 
 };
@@ -80,7 +80,6 @@ public:
 
     std::vector<double> resPos;
     std::vector<beam*> beams;
-    void addRes(double pos);
     void loadjizhongli(double pos, double force);
 
     void loadMoment(double pos, double me);
