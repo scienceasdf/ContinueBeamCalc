@@ -15,6 +15,7 @@
 #include<QFileDialog>
 #include<QDebug>
 #include<QMessageBox>
+#include<QProcess>
 
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
@@ -239,7 +240,7 @@ void Widget::wheelEvent(QWheelEvent *event){
     if(boolScale){
         ratio=(event->delta()>0)?ratio*1.5:ratio/1.5;
         update();
-        ui->scaleLabel->setText(tr("Y轴变形相对于X坐标放大倍数:")+QString::number((int)(ratio*5000)));
+        ui->scaleLabel->setText(tr("Y轴变形相对于X坐标放大倍数:")+QString::number((long long)(ratio*5000)));
     }
 }
 
@@ -444,4 +445,9 @@ void Widget::on_lengthText_editingFinished()
         update();
         txtChange=!txtChange;
     }
+}
+
+void Widget::on_sectionButton_clicked()
+{
+    QProcess::startDetached(QCoreApplication::applicationDirPath()+"/sectionCalc",QStringList());
 }
